@@ -4,7 +4,17 @@ import nltk
 from nltk.tokenize import word_tokenize, wordpunct_tokenize, sent_tokenize
 from nltk.corpus import stopwords
 
+
+import tokenizer
+import indexer
+
+import imp
+indexer.generate_index()
+
+
 app = Flask(__name__)
+
+
 
 @app.route('/')
 def hello():
@@ -31,4 +41,9 @@ def get_tasks():
 		return jsonify({'docs': docs_token[id]})
 		
 	return jsonify({'docs': docs_token})
-	
+
+@app.route('/search', methods=['GET'])
+	if 'q' in request.args:
+		q = request.args['q']
+		
+	return
